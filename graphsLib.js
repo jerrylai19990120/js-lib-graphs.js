@@ -12,26 +12,6 @@ function createCanvas(width, height) {
         return ctx;
 }
 
-function drawGrid(ctx, width, height) {
-    
-    ctx.lineWidth = '1';
-    ctx.strokeStyle = "red";
-    for(let i=50;i<width;i++){
-        ctx.moveTo(0, i);
-        ctx.lineTo(width, i);
-        ctx.stroke();
-        i+=50;
-    }
-
-    for(let i=50;i<height;i++){
-        ctx.moveTo(i, 0);
-        ctx.lineTo(i, height);
-        ctx.stroke();
-        i+=50;
-    }
-}
-
-
 function Graph() {
     
 }
@@ -41,7 +21,11 @@ Graph.prototype = {
 }
 
 function createHistogram(data=[], color="dodgerblue", xAxis="", yAxis=""){
+        
+        //Set the width of the canvas
         let length = data.length;
+
+        //Set the height of the canvas
         let max = Math.max.apply(null, data)+36;
         const ctx = createCanvas(26*length, max);
         
@@ -61,10 +45,44 @@ function createHistogram(data=[], color="dodgerblue", xAxis="", yAxis=""){
 
 createHistogram([160,150,140,100,400,400,120,340,10,20,36,34,15,355,77,233], "green", "temp", "hydration");
 
-
-function createPieChart(data=[], color="dodgerblue") {
-    const ctx = createCanvas(500, 400);
-    
+function sumArray(total, num){
+        return total + num;
 }
 
-createPieChart([30,60,10]);
+function createPieChart(data=[], width=400, height=400, title="") {
+
+    const ctx = createCanvas(width, height);
+    let angle = 0;
+    let sum = data.reduce(sumArray, 0);
+    const colors = [];
+
+    for(let i=0;i<data.length;i++){
+        let randomColor = "#"+Math.floor(Math.random()*16777215).toString(16);
+        //Avoid duplicating colors
+        if(colors.includes(randomColor)){
+            while(colors.includes(randomColor)){
+                randomColor = "#"+Math.floor(Math.random()*16777215).toString(16);
+            }
+        }else{
+            colors.push(randomColor);
+        }
+        ctx.fillStyle=randomColor;
+        ctx.beginPath();
+        ctx.moveTo(width/2, height/2);
+        ctx.arc(width/2, height/2, 120, angle*Math.PI, (angle+(data[i]/sum)*2)*Math.PI);
+        ctx.fill();
+        ctx.closePath(); 
+        //ctx.fillText(`${data[i]}`, width/2, height/2);
+        angle += ((data[i]/sum)*2);
+    }
+    ctx.fillStyle = "black";
+    ctx.fillText(`title: ${title}`, width/2-26, 16);
+
+}
+
+createPieChart([25,25,25,25],400,400,"testing");
+
+
+function createScatterPlot(data=[], width, height){
+    const ctx = createCanvas(width, height);
+}
