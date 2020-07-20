@@ -163,7 +163,7 @@ function createLineChart(data=[], width, height, color="red", title="Line Chart"
 
 createLineChart(data1(),700,620);*/
 
-function createStackedHistogram(data=[], width, height){
+function createStackedHistogram(data=[], width, height, title="Stacked Histogram", name=[]){
     
     const ctx = createCanvas(width, height);
     const colors = [];
@@ -180,13 +180,27 @@ function createStackedHistogram(data=[], width, height){
         }
         x += 40;
     }
-
+    
     ctx.fillStyle = colors[0];
     ctx.fillRect(width/2*1.6, 12, 26, 10);
     ctx.fillStyle = colors[1];
     ctx.fillRect(width/2*1.6, 26, 26, 10);
     ctx.fillStyle = colors[2];
     ctx.fillRect(width/2*1.6, 40, 26, 10);
+
+    ctx.fillStyle = "black";
+    ctx.fillText(`${title}`, width/2*0.9, 16);
+    let lineHeight = 0
+    for(let i=0;i<name.length;i++){
+        ctx.fillText(`${name[i]}`, width/2*1.76, 18+lineHeight);
+        lineHeight += 16;
+    }
 }
 
-createStackedHistogram([[400,300,200],[500,460,430], [480,260,120],[500,460,430],[500,460,430],[500,460,430]], 600, 600);
+createStackedHistogram([[400,300,200],[500,460,430], [480,260,120],[500,460,430],[500,460,430],[500,460,430]], 600, 600, "my chart", ["temp", "height", "weight"]);
+
+function createAreaGraph(data=[], width, height){
+
+    const ctx = createCanvas(width, height);
+
+}
