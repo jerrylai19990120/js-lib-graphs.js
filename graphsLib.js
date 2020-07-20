@@ -197,10 +197,104 @@ function createStackedHistogram(data=[], width, height, title="Stacked Histogram
     }
 }
 
-createStackedHistogram([[400,300,200],[500,460,430], [480,260,120],[500,460,430],[500,460,430],[500,460,430]], 600, 600, "my chart", ["temp", "height", "weight"]);
+//createStackedHistogram([[400,300,200],[500,460,430], [480,260,120],[500,460,430],[500,460,430],[500,460,430]], 600, 600, "my chart", ["temp", "height", "weight"]);
 
 function createAreaGraph(data=[], width, height){
 
     const ctx = createCanvas(width, height);
 
+
 }
+
+//createAreaGraph([25, 30, 45], 600, 400);
+
+function createRadarGraph(){
+    var context = createCanvas(500, 500);
+    function drawPath(x, y, n, r, style) {
+        var i,ang;
+        ang = Math.PI*2/n //旋转的角度
+        context.save();//保存状态
+        //set style
+        for( var styleList in style) {
+            context[styleList] = style[styleList];
+        }
+        context.translate(x, y);//原点移到x,y处，即要画的多边形中心
+        context.moveTo(0, -r);//据中心r距离处画点
+        context.beginPath();
+        for(i = 0;i < n; i ++) {
+            context.rotate(ang)//旋转
+            context.lineTo(0, -r);//据中心r距离处连线
+        }
+        context.closePath();
+        context.stroke();
+        context.fill();
+        context.restore();//返回原始状态
+    }
+    //
+    drawPath(250, 250, 5, 240, {
+        fillStyle: 'rgba(243, 231, 206, 1)',
+        lineWidth: '2',
+        strokeStyle: 'rgba(247, 206, 158, 1)'
+    });
+    drawPath(250, 250, 5, 200, {
+        fillStyle: '#F6DFAD',
+        strokeStyle: 'rgba(255, 255, 255, 0)'
+    });
+    drawPath(250, 250, 5, 160, {
+        fillStyle: '#F7D792',
+        strokeStyle: 'rgba(255, 255, 255, 0)'
+    });
+    drawPath(250, 250, 5, 120, {
+        fillStyle: '#F7CF80',
+        strokeStyle: 'rgba(255, 255, 255, 0)'
+    });
+    drawPath(250, 250, 5, 80, {
+        fillStyle: '#F8C96D',
+        strokeStyle: 'rgba(255, 255, 255, 0)'
+    });
+    drawPath(250, 250, 5, 40, {
+        fillStyle: '#F8C662',
+        strokeStyle: 'rgba(255, 255, 255, 0)'
+    });
+    
+    
+    
+    //创建能力盘
+    var ability = {
+        num : [3.521,3.12,2.5,3,4.79],
+        style: {
+            fillStyle: 'rgba(255, 158, 92, .5)',
+            lineWidth: '2',
+            strokeStyle: '#FD7A42'
+        }
+    }
+    function setAbility(x, y, n, r, style, ability) {
+        var i,ang;
+        ang = Math.PI*2/5 //旋转的角度
+        context.save();//保存状态
+        //set style
+        for( var styleList in style) {
+            context[styleList] = style[styleList];
+        }
+        context.translate(x, y);//原点移到x,y处，即要画的多边形中心
+        context.moveTo(0, -parseFloat(ability[0] * 40 + 40));//绘制起点
+        context.beginPath();
+        //5*40+40
+        for(i = 0;i < n; i ++) {
+            context.rotate(ang)//旋转
+            context.lineTo(0, -parseFloat(ability[i] * 40 + 40));//据中心r距离处连线
+        }
+        context.closePath();
+        context.stroke();
+        context.fill();
+        context.restore();//返回原始状态
+    }
+    setAbility(250, 250, 5, 100, ability.style, ability.num);
+}
+
+createRadarGraph();
+
+function createRandomAreaSpreadGraph(){
+
+}
+
