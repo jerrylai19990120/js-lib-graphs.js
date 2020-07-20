@@ -136,13 +136,20 @@ function createLineChart(data=[], width, height, color="red", title="Line Chart"
     let x = 5;
     ctx.strokeStyle = color;
     ctx.beginPath();
+    ctx.moveTo(x, data[0]);
     for(let i=0;i<data.length; i++){
         
-        ctx.arc(x, data[i], 2, 0, 2*Math.PI);
+        //ctx.arc(x, data[i], 2, 0, 2*Math.PI);
+        ctx.lineTo(x, data[i]);
         ctx.stroke();
         x += 10;
     }
     ctx.closePath();
+    ctx.fillStyle = 'black';
+    ctx.fillText(title, width/2*0.96, 16);
+
+    ctx.fillText(`X: ${xAxis}`, width/2*1.66, 16);
+    ctx.fillText(`Y: ${yAxis}`, width/2*1.66, 28);
 }
 
-createLineChart([200,100,400,300,600,500],700,600);
+createLineChart([200,100,400,300,600,500],700,620);
