@@ -49,6 +49,8 @@ function sumArray(total, num){
         return total + num;
 }
 
+const randomColoring = () => "#"+Math.floor(Math.random()*16777215).toString(16);
+
 function createPieChart(data=[], width=400, height=400, title="Pie Chart") {
 
     const ctx = createCanvas(width, height);
@@ -57,7 +59,7 @@ function createPieChart(data=[], width=400, height=400, title="Pie Chart") {
     const colors = [];
 
     for(let i=0;i<data.length;i++){
-        let randomColor = "#"+Math.floor(Math.random()*16777215).toString(16);
+        let randomColor = randomColoring();
         //Avoid duplicating colors
         if(colors.includes(randomColor)){
             while(colors.includes(randomColor)){
@@ -139,7 +141,6 @@ function createLineChart(data=[], width, height, color="red", title="Line Chart"
     ctx.moveTo(x, data[0]);
     for(let i=0;i<data.length; i++){
         
-        //ctx.arc(x, data[i], 2, 0, 2*Math.PI);
         ctx.lineTo(x, data[i]);
         ctx.stroke();
         x += 10;
@@ -152,4 +153,40 @@ function createLineChart(data=[], width, height, color="red", title="Line Chart"
     ctx.fillText(`Y: ${yAxis}`, width/2*1.66, 28);
 }
 
-createLineChart([200,100,400,300,600,500],700,620);
+/*const data1 = ()=>{
+    const data = [];
+    for(let i=0;i<500;i++){
+        data.push(Math.floor(Math.random()*400));
+    }
+    return data;
+}
+
+createLineChart(data1(),700,620);*/
+
+function createStackedHistogram(data=[], width, height){
+    
+    const ctx = createCanvas(width, height);
+    const colors = [];
+    for(let i=0;i<data[0].length;i++){
+        colors.push(randomColoring());
+    }
+    let x = 5;
+    let wide = 20;
+    for(let i=0;i<data.length;i++){
+        for(let j=0;j<data[i].length;j++){
+            let startY = height - data[i][j];
+            ctx.fillStyle = colors[j];
+            ctx.fillRect(x, startY, wide, data[i][j]);
+        }
+        x += 40;
+    }
+
+    ctx.fillStyle = colors[0];
+    ctx.fillRect(width/2*1.6, 12, 26, 10);
+    ctx.fillStyle = colors[1];
+    ctx.fillRect(width/2*1.6, 26, 26, 10);
+    ctx.fillStyle = colors[2];
+    ctx.fillRect(width/2*1.6, 40, 26, 10);
+}
+
+createStackedHistogram([[400,300,200],[500,460,430], [480,260,120],[500,460,430],[500,460,430],[500,460,430]], 600, 600);
