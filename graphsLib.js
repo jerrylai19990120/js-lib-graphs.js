@@ -133,6 +133,16 @@ function createLineChart(data=[], width, height, color="red", title="Line Chart"
     
     const ctx = createCanvas(width, height);
 
+    let x = 5;
+    ctx.strokeStyle = color;
+    ctx.beginPath();
+    for(let i=0;i<data.length; i++){
+        
+        ctx.arc(x, data[i], 2, 0, 2*Math.PI);
+        ctx.stroke();
+        x += 10;
+    }
+    ctx.closePath();
 }
 
 createLineChart([200,100,400,300,600,500],700,600);
