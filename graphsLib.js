@@ -198,7 +198,13 @@ function createStackedHistogram(data=[], width, height, title="Stacked Histogram
 
 //createStackedHistogram([[400,300,200],[500,460,430], [480,260,120],[500,460,430],[500,460,430],[500,460,430]], 600, 600, "my chart", ["temp", "height", "weight"]);
 
-function createAreaGraph(data=[], width, height, colors=[], title="Area Graph"){
+function getRandomColorRGBA(min, max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function createAreaGraph(data=[], width, height, title="Area Graph"){
 
     const ctx = createCanvas(width, height);
 
@@ -206,7 +212,8 @@ function createAreaGraph(data=[], width, height, colors=[], title="Area Graph"){
     
     for(let j=0;j<data.length;j++){
         x = 0;
-        ctx.strokeStyle = colors[j];
+        let color = `rgba(${getRandomColorRGBA(0, 255)}, ${getRandomColorRGBA(0, 255)}, ${getRandomColorRGBA(0, 255)}, 0.46)`;
+        ctx.strokeStyle = color;
         ctx.beginPath();
         ctx.lineTo(x, height);
         for(let i=0;i<data[j].length; i++){
@@ -215,7 +222,7 @@ function createAreaGraph(data=[], width, height, colors=[], title="Area Graph"){
         }
         ctx.lineTo(x-20, height);
         ctx.stroke();
-        ctx.fillStyle = "rgba(260, 60, 100, 0.54)";
+        ctx.fillStyle = color;
         ctx.fill();
         ctx.closePath();
     }
@@ -226,7 +233,7 @@ function createAreaGraph(data=[], width, height, colors=[], title="Area Graph"){
 
 }
 
-createAreaGraph([data1(), data1(), data1()], 600, 400, ['red', 'green', 'blue']);
+createAreaGraph([data1(), data1(), data1()], 600, 400);
 
 function drawPolygon(ctx, centerX, centerY, radius, numAngles, color){
     
