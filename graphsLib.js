@@ -204,15 +204,16 @@ function getRandomColorRGBA(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function createAreaGraph(data=[], width, height, title="Area Graph"){
+function createAreaGraph(data=[], width, height, names=[], title="Area Graph"){
 
     const ctx = createCanvas(width, height);
-
+    const colors = [];
     let x = 0;
     
     for(let j=0;j<data.length;j++){
         x = 0;
         let color = `rgba(${getRandomColorRGBA(0, 255)}, ${getRandomColorRGBA(0, 255)}, ${getRandomColorRGBA(0, 255)}, 0.46)`;
+        colors.push(color);
         ctx.strokeStyle = color;
         ctx.beginPath();
         ctx.lineTo(x, height);
@@ -230,10 +231,21 @@ function createAreaGraph(data=[], width, height, title="Area Graph"){
     ctx.fillStyle = 'black';
     ctx.fillText(title, width/2*0.96, 16);
 
+    let lineHeight = 12;
+    let gap = 0;
+    for(let i=0;i<colors.length;i++){
+        ctx.fillStyle = colors[i];
+        ctx.fillRect(width/2*1.76, lineHeight, 26, 10);
+        ctx.fillStyle = 'black';
+        ctx.fillText(`${names[i]}`, width/2*1.85, 20+gap);
+        lineHeight += 14;
+        gap += 14.6;
+    }
+
 
 }
 
-createAreaGraph([data1(), data1(), data1()], 600, 400);
+createAreaGraph([data1(), data1(), data1()], 800, 400, ['temp', 'width', 'height']);
 
 function drawPolygon(ctx, centerX, centerY, radius, numAngles, color){
     
