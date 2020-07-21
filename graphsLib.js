@@ -140,7 +140,6 @@ function createLineChart(data=[], width, height, color="red", title="Line Chart"
     ctx.beginPath();
     ctx.moveTo(x, data[0]);
     for(let i=0;i<data.length; i++){
-        
         ctx.lineTo(x, data[i]);
         ctx.stroke();
         x += 10;
@@ -153,7 +152,7 @@ function createLineChart(data=[], width, height, color="red", title="Line Chart"
     ctx.fillText(`Y: ${yAxis}`, width/2*1.66, 28);
 }
 
-/*const data1 = ()=>{
+const data1 = ()=>{
     const data = [];
     for(let i=0;i<500;i++){
         data.push(Math.floor(Math.random()*400));
@@ -161,7 +160,7 @@ function createLineChart(data=[], width, height, color="red", title="Line Chart"
     return data;
 }
 
-createLineChart(data1(),700,620);*/
+//createLineChart(data1(),700,620);
 
 function createStackedHistogram(data=[], width, height, title="Stacked Histogram", name=[]){
     
@@ -199,14 +198,30 @@ function createStackedHistogram(data=[], width, height, title="Stacked Histogram
 
 //createStackedHistogram([[400,300,200],[500,460,430], [480,260,120],[500,460,430],[500,460,430],[500,460,430]], 600, 600, "my chart", ["temp", "height", "weight"]);
 
-function createAreaGraph(data=[], width, height){
+function createAreaGraph(data=[], width, height, color, title="Area Graph"){
 
     const ctx = createCanvas(width, height);
+
+    let x = 0;
+    ctx.strokeStyle = color;
+    ctx.beginPath();
+    ctx.lineTo(x, height);
+    for(let i=0;i<data.length; i++){
+        ctx.lineTo(x, data[i]);
+        x += 20;
+    }
+    ctx.lineTo(x-20, height);
+    ctx.stroke();
+    ctx.fillStyle = "rgba(260, 60, 100, 0.54)";
+    ctx.fill();
+    ctx.closePath();
+    ctx.fillStyle = 'black';
+    ctx.fillText(title, width/2*0.96, 16);
 
 
 }
 
-//createAreaGraph([25, 30, 45], 600, 400);
+createAreaGraph(data1(), 600, 400, 'red');
 
 function drawPolygon(ctx, centerX, centerY, radius, numAngles, color){
     
@@ -260,7 +275,7 @@ function distributeData(ctx, centerX, centerY, radius, numAngles, data, colors){
 }
 
 
-function createRadarGraph(data=[], width, height, radius, title="Radar Graph", dataColor=["rgba(200, 103, 100, 0.66)"]){
+function createRadarGraph(data=[], width, height, radius, title="Radar Graph", dataColors=["rgba(200, 103, 100, 0.66)"]){
     const ctx = createCanvas(width, height);
     ctx.fillStyle = 'black';
     ctx.fillText(`${title}`, width/2-23, 16);
@@ -275,11 +290,11 @@ function createRadarGraph(data=[], width, height, radius, title="Radar Graph", d
         radius-=40;
     }
 
-    distributeData(ctx, centerX, centerY, radius, numAngles, data, dataColor);
+    distributeData(ctx, centerX, centerY, radius, numAngles, data, dataColors);
     
 }
 
-createRadarGraph([[60, 50, 40, 90, 80]], 500, 500, 240, "test radar");
+//createRadarGraph([[60, 50, 40, 90, 80], [60, 60, 60, 0, 0], [7, 60, 60, 0, 54]], 500, 500, 240, "test radar", ["rgba(200, 103, 100, 0.66)", "rgba(100, 200, 100, 0.66)", "rgba(100, 100, 200, 0.66)"]);
 
 function createRandomAreaSpreadGraph(){
 
