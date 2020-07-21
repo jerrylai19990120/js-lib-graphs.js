@@ -208,59 +208,67 @@ function createAreaGraph(data=[], width, height){
 
 //createAreaGraph([25, 30, 45], 600, 400);
 
-function drawPolygon(ctx, centerX, centerY, radius, numAngles, colors){
+function drawPolygon(ctx, centerX, centerY, radius, numAngles, color){
     
-    let angle = 360/numAngles;
     ctx.save();
+    let angle = 360/numAngles;
     ctx.translate(centerX, centerY);
     ctx.lineWidth = 2;
-    ctx.fillStyle = colors[0];
-    ctx.strokeStyle = colors[1];
+    ctx.fillStyle = color;
     
     ctx.beginPath();
-    ctx.lineTo(0, -radius);
+    ctx.moveTo(0, -radius);
     for(let i=0;i<numAngles;i++){
         ctx.rotate(angle*Math.PI/180);
         ctx.lineTo(0, -radius);
     }
     ctx.fill();
-    ctx.stroke();
     ctx.closePath();
     ctx.restore();
 }
 
+function distributeData(ctx, centerX, centerY, radius, numAngles, data,color){
 
-
-function createRadarGraph(title="Radar Graph"){
-    const ctx = createCanvas(500, 500);
-    drawPolygon(ctx, 250, 250, 240, 5, [
-        'rgba(243, 231, 206, 1)',
-        'rgba(247, 206, 158, 1)'
-    ]);
-
-    drawPolygon(ctx, 250, 250, 200, 5, [
-        '#F6DFAD',
-        'rgba(255, 255, 255, 0)'
-    ]);
+    ctx.save();
+    let angle = 360/numAngles;
+    ctx.translate(centerX, centerY);
+    ctx.lineWidth = 2;
+    ctx.fillStyle = color;
     
-    drawPolygon(ctx, 250, 250, 160, 5, [
-        '#F7CF80',
-        'rgba(255, 255, 255, 0)'
-    ]);
+    ctx.beginPath();
+    ctx.moveTo(0, -(data[0]/radius)*100);
+    for(let i=0;i<numAngles;i++){
+        ctx.rotate(angle*Math.PI/180);
+        ctx.lineTo(0, -(data[i]/radius*100)+50);
+        
+    }
+    ctx.stroke();
+    ctx.closePath();
+    ctx.restore();
 
-    drawPolygon(ctx, 250, 250, 120, 5, [
-        '#F7CF80',
-        'rgba(255, 255, 255, 0)'
-    ]);
+}
 
-    drawPolygon(ctx, 250, 250, 80, 5, [
-        '#F8C662',
-        'rgba(255, 255, 255, 0)'
-    ]);
+
+function createRadarGraph(data=[], width, height, radius, title="Radar Graph"){
+    const ctx = createCanvas(width, height);
+    ctx.fillStyle = 'black';
+    ctx.fillText(`${title}`, width/2-23, 16);
+    const numAngles = data.length;
+    const centerX = width/2;
+    const centerY = height/2+18;
+    let opacity = 0.16;
+    while(radius>60){
+        drawPolygon(ctx, centerX, centerY, radius, numAngles,
+            `rgba(0, 203, 255, ${opacity})`);
+        opacity += 0.16;
+        radius-=40;
+    }
+
+    distributeData(ctx, centerX, centerY, radius, numAngles, data, "rgba(200, 103, 100, 0.66)");
     
 }
 
-createRadarGraph();
+createRadarGraph([60, 50, 40, 90, 80], 500, 500, 240, "test radar");
 
 function createRandomAreaSpreadGraph(){
 
