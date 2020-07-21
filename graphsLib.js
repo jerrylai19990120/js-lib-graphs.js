@@ -211,7 +211,7 @@ function createAreaGraph(data=[], width, height){
 function drawPolygon(ctx, centerX, centerY, radius, numAngles, colors){
     
     let angle = 360/numAngles;
-    
+    ctx.save();
     ctx.translate(centerX, centerY);
     ctx.lineWidth = 2;
     ctx.fillStyle = colors[0];
@@ -226,44 +226,37 @@ function drawPolygon(ctx, centerX, centerY, radius, numAngles, colors){
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
-    
+    ctx.restore();
 }
 
 
 
-function createRadarGraph(){
+function createRadarGraph(title="Radar Graph"){
     const ctx = createCanvas(500, 500);
     drawPolygon(ctx, 250, 250, 240, 5, [
         'rgba(243, 231, 206, 1)',
         'rgba(247, 206, 158, 1)'
     ]);
+
+    drawPolygon(ctx, 250, 250, 200, 5, [
+        '#F6DFAD',
+        'rgba(255, 255, 255, 0)'
+    ]);
     
-    //
-    /*drawPath(250, 250, 5, 240, {
-        fillStyle: 'rgba(243, 231, 206, 1)',
-        lineWidth: '2',
-        strokeStyle: 'rgba(247, 206, 158, 1)'
-    });
-    drawPath(250, 250, 5, 200, {
-        fillStyle: '#F6DFAD',
-        strokeStyle: 'rgba(255, 255, 255, 0)'
-    });
-    drawPath(250, 250, 5, 160, {
-        fillStyle: '#F7D792',
-        strokeStyle: 'rgba(255, 255, 255, 0)'
-    });
-    drawPath(250, 250, 5, 120, {
-        fillStyle: '#F7CF80',
-        strokeStyle: 'rgba(255, 255, 255, 0)'
-    });
-    drawPath(250, 250, 5, 80, {
-        fillStyle: '#F8C96D',
-        strokeStyle: 'rgba(255, 255, 255, 0)'
-    });
-    drawPath(250, 250, 5, 40, {
-        fillStyle: '#F8C662',
-        strokeStyle: 'rgba(255, 255, 255, 0)'
-    });*/
+    drawPolygon(ctx, 250, 250, 160, 5, [
+        '#F7CF80',
+        'rgba(255, 255, 255, 0)'
+    ]);
+
+    drawPolygon(ctx, 250, 250, 120, 5, [
+        '#F7CF80',
+        'rgba(255, 255, 255, 0)'
+    ]);
+
+    drawPolygon(ctx, 250, 250, 80, 5, [
+        '#F8C662',
+        'rgba(255, 255, 255, 0)'
+    ]);
     
 }
 
