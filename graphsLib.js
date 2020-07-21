@@ -198,30 +198,35 @@ function createStackedHistogram(data=[], width, height, title="Stacked Histogram
 
 //createStackedHistogram([[400,300,200],[500,460,430], [480,260,120],[500,460,430],[500,460,430],[500,460,430]], 600, 600, "my chart", ["temp", "height", "weight"]);
 
-function createAreaGraph(data=[], width, height, color, title="Area Graph"){
+function createAreaGraph(data=[], width, height, colors=[], title="Area Graph"){
 
     const ctx = createCanvas(width, height);
 
     let x = 0;
-    ctx.strokeStyle = color;
-    ctx.beginPath();
-    ctx.lineTo(x, height);
-    for(let i=0;i<data.length; i++){
-        ctx.lineTo(x, data[i]);
-        x += 20;
+    
+    for(let j=0;j<data.length;j++){
+        x = 0;
+        ctx.strokeStyle = colors[j];
+        ctx.beginPath();
+        ctx.lineTo(x, height);
+        for(let i=0;i<data[j].length; i++){
+                ctx.lineTo(x, data[j][i]);
+                x += 20;
+        }
+        ctx.lineTo(x-20, height);
+        ctx.stroke();
+        ctx.fillStyle = "rgba(260, 60, 100, 0.54)";
+        ctx.fill();
+        ctx.closePath();
     }
-    ctx.lineTo(x-20, height);
-    ctx.stroke();
-    ctx.fillStyle = "rgba(260, 60, 100, 0.54)";
-    ctx.fill();
-    ctx.closePath();
+    
     ctx.fillStyle = 'black';
     ctx.fillText(title, width/2*0.96, 16);
 
 
 }
 
-createAreaGraph(data1(), 600, 400, 'red');
+createAreaGraph([data1(), data1(), data1()], 600, 400, ['red', 'green', 'blue']);
 
 function drawPolygon(ctx, centerX, centerY, radius, numAngles, color){
     
