@@ -227,17 +227,22 @@ function drawPolygon(ctx, centerX, centerY, radius, numAngles, color){
     ctx.restore();
 }
 
-function distributeData(ctx, centerX, centerY, radius, numAngles, data, color){
+function distributeData(ctx, centerX, centerY, radius, numAngles, data, colors){
 
     ctx.save();
     let angle = 360/numAngles;
     ctx.translate(centerX, centerY);
     ctx.lineWidth = 2;
     ctx.strokeStyle = "rgba(260, 60, 100, 0.54)";
-    ctx.fillStyle = color;
 
     
     for(let i=0;i<data.length;i++){
+        if(i>=colors.length){
+            ctx.fillStyle = colors[0];
+        }else{
+            ctx.fillStyle = colors[i];
+        }
+        
         ctx.moveTo(0, -(data[i][0]/radius)*100);
         ctx.beginPath();
         for(let j=0;j<numAngles;j++){
@@ -247,6 +252,7 @@ function distributeData(ctx, centerX, centerY, radius, numAngles, data, color){
         ctx.closePath();
         ctx.stroke();
         ctx.fill();
+        
     }
     
     ctx.restore();
@@ -254,7 +260,7 @@ function distributeData(ctx, centerX, centerY, radius, numAngles, data, color){
 }
 
 
-function createRadarGraph(data=[], width, height, radius, title="Radar Graph"){
+function createRadarGraph(data=[], width, height, radius, title="Radar Graph", dataColor=["rgba(200, 103, 100, 0.66)"]){
     const ctx = createCanvas(width, height);
     ctx.fillStyle = 'black';
     ctx.fillText(`${title}`, width/2-23, 16);
@@ -269,7 +275,7 @@ function createRadarGraph(data=[], width, height, radius, title="Radar Graph"){
         radius-=40;
     }
 
-    distributeData(ctx, centerX, centerY, radius, numAngles, data, "rgba(200, 103, 100, 0.66)");
+    distributeData(ctx, centerX, centerY, radius, numAngles, data, dataColor);
     
 }
 
