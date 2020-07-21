@@ -245,7 +245,7 @@ function createAreaGraph(data=[], width, height, names=[], title="Area Graph"){
 
 }
 
-createAreaGraph([data1(), data1(), data1()], 800, 400, ['temp', 'width', 'height']);
+//createAreaGraph([data1(), data1(), data1()], 800, 400, ['temp', 'width', 'height']);
 
 function drawPolygon(ctx, centerX, centerY, radius, numAngles, color){
     
@@ -320,7 +320,12 @@ function createRadarGraph(data=[], width, height, radius, title="Radar Graph", d
 
 //createRadarGraph([[60, 50, 40, 90, 80], [60, 60, 60, 0, 0], [7, 60, 60, 0, 54]], 500, 500, 240, "test radar", ["rgba(200, 103, 100, 0.66)", "rgba(100, 200, 100, 0.66)", "rgba(100, 100, 200, 0.66)"]);
 
-function createRandomAreaSpreadGraph(){
+function createPyramidGraph(data=[], width, height){
+
+    const ctx = createCanvas(width, height);
 
 }
+
+createPyramidGraph([30, 50, 80, 120], 600, 400);
+
 
