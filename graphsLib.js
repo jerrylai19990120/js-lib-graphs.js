@@ -320,9 +320,9 @@ function createRadarGraph(data=[], width, height, radius, title="Radar Graph", d
 
 //createRadarGraph([[60, 50, 40, 90, 80], [60, 60, 60, 0, 0], [7, 60, 60, 0, 54]], 500, 500, 240, "test radar", ["rgba(200, 103, 100, 0.66)", "rgba(100, 200, 100, 0.66)", "rgba(100, 100, 200, 0.66)"]);
 
-function createPyramidGraph(data=[], color='dodgerblue', title="Pyramid Graph"){
+function createPyramidGraph(data=[], color='dodgerblue', title="Pyramid Graph", categories=[], groups=["1", "2"]){
     
-    let height = data.length*(16+5);
+    let height = data.length*(16+5)+60;
     const elements = [];
     for(let i=0;i<data.length;i++){
         elements.push(data[i][0]);
@@ -331,7 +331,7 @@ function createPyramidGraph(data=[], color='dodgerblue', title="Pyramid Graph"){
     let width = Math.max.apply(null, elements)*2 + 160;
     const ctx = createCanvas(width, height);
     ctx.beginPath();
-    ctx.moveTo(width/2, 0);
+    ctx.moveTo(width/2, 60);
     ctx.lineTo(width/2, height);
     ctx.closePath();
     ctx.stroke();
@@ -347,18 +347,25 @@ function createPyramidGraph(data=[], color='dodgerblue', title="Pyramid Graph"){
     const sortedLeft = left.sort((a, b)=>a-b);
     const sortedRight = right.sort((a, b)=>a-b);
     ctx.fillStyle = color;
-    let y = 5;
+    let y = 60;
     for(let i=0;i<sortedLeft.length;i++){
         let startX = width/2 - sortedLeft[i]-3;
         ctx.fillRect(startX, y, sortedLeft[i], 16);
 
         let startX2 = width/2+3;
         ctx.fillRect(startX2, y, sortedRight[i], 16);
+
+        ctx.fillText(`${categories[i]}`, 8, y+12);
         y += 20;
     }
 
+    ctx.fillStyle = 'black';
+    ctx.fillText(`${title}`, width/2*0.88, 16);
+    ctx.fillText(`${groups[0]}`, width/2.64*0.88, 42);
+    ctx.fillText(`${groups[1]}`, width/1.36*0.88, 42);
+
 }
 
-createPyramidGraph([[30, 50], [80, 120], [50, 70], [70, 80], [120, 60], [126, 96]], 'rgba(255, 100, 100, 0.6)');
+createPyramidGraph([[30, 50], [80, 120], [50, 70], [70, 80], [120, 60], [126, 96]], 'rgba(255, 100, 100, 0.6)', "Survey Data", ["group1","group2","group3","group4","group5","group6"]);
 
 
