@@ -366,6 +366,6 @@ function createPyramidGraph(data=[], color='dodgerblue', title="Pyramid Graph", 
 
 }
 
-createPyramidGraph([[30, 50], [80, 120], [50, 70], [70, 80], [120, 60], [126, 96]], 'rgba(255, 100, 100, 0.6)', "Survey Data", ["group1","group2","group3","group4","group5","group6"]);
+//createPyramidGraph([[30, 50], [80, 120], [50, 70], [70, 80], [120, 60], [126, 96]], 'rgba(255, 100, 100, 0.6)', "Survey Data", ["group1","group2","group3","group4","group5","group6"]);
 
 
