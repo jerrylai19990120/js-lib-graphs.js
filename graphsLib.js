@@ -33,7 +33,6 @@ function createHistogram(data=[], color="dodgerblue", xAxis="x axis", yAxis="y a
         return canvas;
 }
 
-//createHistogram([160,150,140,100,400,400,120,340,10,20,36,34,15,355,77,233], "green", "temp", "hydration");
 
 function sumArray(total, num){
         return total + num;
@@ -50,6 +49,7 @@ function createPieChart(data=[], width=400, height=400, title="Pie Chart") {
 
     for(let i=0;i<data.length;i++){
         let randomColor = randomColoring();
+
         //Avoid duplicating colors
         if(colors.includes(randomColor)){
             while(colors.includes(randomColor)){
@@ -67,7 +67,6 @@ function createPieChart(data=[], width=400, height=400, title="Pie Chart") {
         ctx.fill();
         ctx.stroke();
         ctx.closePath(); 
-        //ctx.fillText(`${data[i]}`, width/2, height/2);
         angle += ((data[i]/sum)*2);
     }
     ctx.fillStyle = "black";
@@ -76,8 +75,6 @@ function createPieChart(data=[], width=400, height=400, title="Pie Chart") {
     return canvas;
 
 }
-
-//createPieChart([25,25,25,25],400,400,"testing");
 
 
 function createScatterPlot(data=[], color="red", title="Scatter Plot", xAxis="x axis", yAxis="y axis"){
@@ -113,16 +110,6 @@ function createScatterPlot(data=[], color="red", title="Scatter Plot", xAxis="x 
     return canvas;
 }
 
-/*const testData = () => {
-    const data = [];
-    for(let i=0;i<100;i++){
-        data.push([Math.floor(Math.random()*500), Math.floor(Math.random()*500)]);
-    }
-    return data;
-}*/
-//const data = testData();
-
-//createScatterPlot(data, "blue", "ice cream", "temp", "ice cream");
 
 function createLineChart(data=[], width, height, color="red", title="Line Chart", xAxis="x axis", yAxis="y axis"){
     
@@ -146,16 +133,6 @@ function createLineChart(data=[], width, height, color="red", title="Line Chart"
 
     return canvas;
 }
-
-/*const data1 = ()=>{
-    const data = [];
-    for(let i=0;i<500;i++){
-        data.push(Math.floor(Math.random()*400));
-    }
-    return data;
-}*/
-
-//createLineChart(data1(),700,620);
 
 function createStackedHistogram(data=[], width, height, title="Stacked Histogram", name=[]){
     
@@ -192,7 +169,6 @@ function createStackedHistogram(data=[], width, height, title="Stacked Histogram
     return canvas;
 }
 
-//createStackedHistogram([[400,300,200],[500,460,430], [480,260,120],[500,460,430],[500,460,430],[500,460,430]], 600, 600, "my chart", ["temp", "height", "weight"]);
 
 function getRandomColorRGBA(min, max){
     min = Math.ceil(min);
@@ -241,7 +217,6 @@ function createAreaGraph(data=[], width, height, names=[], title="Area Graph"){
     return canvas;
 }
 
-//createAreaGraph([data1(), data1(), data1()], 800, 400, ['temp', 'width', 'height']);
 
 function drawPolygon(ctx, centerX, centerY, radius, numAngles, color){
     
@@ -315,7 +290,6 @@ function createRadarGraph(data=[], width, height, radius, title="Radar Graph", d
     
 }
 
-//createRadarGraph([[60, 50, 40, 90, 80], [60, 60, 60, 0, 0], [7, 60, 60, 0, 54]], 500, 500, 240, "test radar", ["rgba(200, 103, 100, 0.66)", "rgba(100, 200, 100, 0.66)", "rgba(100, 100, 200, 0.66)"]);
 
 function createPyramidGraph(data=[], color='dodgerblue', title="Pyramid Graph", categories=[], groups=["1", "2"]){
     
@@ -396,7 +370,5 @@ const pyramidGraph = {
     createPyramidGraph
 }
 
-
-//createPyramidGraph([[30, 50], [80, 120], [50, 70], [70, 80], [120, 60], [126, 96]], 'rgba(255, 100, 100, 0.6)', "Survey Data", ["group1","group2","group3","group4","group5","group6"]);
 
 
