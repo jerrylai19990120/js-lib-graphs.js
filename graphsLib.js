@@ -1,23 +1,12 @@
-"use strict"
 
 function createCanvas(width, height) {
         let canvas = document.createElement('canvas');
-        let body = document.querySelector('body');
         canvas.classList.add("graph");
         canvas.style = "border:1px solid lightgray;"
         canvas.width = width;
         canvas.height = height;
         let ctx = canvas.getContext("2d");
-        body.appendChild(canvas);
-        return ctx;
-}
-
-function Graph() {
-    
-}
-
-Graph.prototype = {
-    
+        return [ctx, canvas];
 }
 
 function createHistogram(data=[], color="dodgerblue", xAxis="x axis", yAxis="y axis"){
@@ -27,7 +16,7 @@ function createHistogram(data=[], color="dodgerblue", xAxis="x axis", yAxis="y a
 
         //Set the height of the canvas
         let max = Math.max.apply(null, data)+36;
-        const ctx = createCanvas(26*length, max);
+        const [ctx, canvas] = createCanvas(26*length, max);
         
         let x = 5;
         for(let i=0;i<data.length;i++){
@@ -41,6 +30,7 @@ function createHistogram(data=[], color="dodgerblue", xAxis="x axis", yAxis="y a
             x = x + width + 5;
         }
         ctx.fillText(`X: ${xAxis} \n Y: ${yAxis}`, length*18, 16);
+        return canvas;
 }
 
 //createHistogram([160,150,140,100,400,400,120,340,10,20,36,34,15,355,77,233], "green", "temp", "hydration");
@@ -53,7 +43,7 @@ const randomColoring = () => "#"+Math.floor(Math.random()*16777215).toString(16)
 
 function createPieChart(data=[], width=400, height=400, title="Pie Chart") {
 
-    const ctx = createCanvas(width, height);
+    const [ctx, canvas] = createCanvas(width, height);
     let angle = 0;
     let sum = data.reduce(sumArray, 0);
     const colors = [];
@@ -83,6 +73,8 @@ function createPieChart(data=[], width=400, height=400, title="Pie Chart") {
     ctx.fillStyle = "black";
     ctx.fillText(`title: ${title}`, width/2-26, 16);
 
+    return canvas;
+
 }
 
 //createPieChart([25,25,25,25],400,400,"testing");
@@ -102,7 +94,7 @@ function createScatterPlot(data=[], color="red", title="Scatter Plot", xAxis="x 
     //Set the height of the canvas
     let height = Math.max.apply(null, yCord)+36;
     
-    const ctx = createCanvas(width, height);
+    const [ctx, canvas] = createCanvas(width, height);
     ctx.fillStyle = color;
     for(let i=0;i<data.length;i++){
         ctx.beginPath();
@@ -118,22 +110,23 @@ function createScatterPlot(data=[], color="red", title="Scatter Plot", xAxis="x 
 
     ctx.fillText(`X: ${xAxis}`, width/2*1.6, 16);
     ctx.fillText(`Y: ${yAxis}`, width/2*1.6, 28);
+    return canvas;
 }
 
-const testData = () => {
+/*const testData = () => {
     const data = [];
     for(let i=0;i<100;i++){
         data.push([Math.floor(Math.random()*500), Math.floor(Math.random()*500)]);
     }
     return data;
-}
+}*/
 //const data = testData();
 
 //createScatterPlot(data, "blue", "ice cream", "temp", "ice cream");
 
 function createLineChart(data=[], width, height, color="red", title="Line Chart", xAxis="x axis", yAxis="y axis"){
     
-    const ctx = createCanvas(width, height);
+    const [ctx, canvas] = createCanvas(width, height);
 
     let x = 5;
     ctx.strokeStyle = color;
@@ -150,21 +143,23 @@ function createLineChart(data=[], width, height, color="red", title="Line Chart"
 
     ctx.fillText(`X: ${xAxis}`, width/2*1.66, 16);
     ctx.fillText(`Y: ${yAxis}`, width/2*1.66, 28);
+
+    return canvas;
 }
 
-const data1 = ()=>{
+/*const data1 = ()=>{
     const data = [];
     for(let i=0;i<500;i++){
         data.push(Math.floor(Math.random()*400));
     }
     return data;
-}
+}*/
 
 //createLineChart(data1(),700,620);
 
 function createStackedHistogram(data=[], width, height, title="Stacked Histogram", name=[]){
     
-    const ctx = createCanvas(width, height);
+    const [ctx, canvas] = createCanvas(width, height);
     const colors = [];
     for(let i=0;i<data[0].length;i++){
         colors.push(randomColoring());
@@ -194,6 +189,7 @@ function createStackedHistogram(data=[], width, height, title="Stacked Histogram
         ctx.fillText(`${name[i]}`, width/2*1.76, 18+lineHeight);
         lineHeight += 16;
     }
+    return canvas;
 }
 
 //createStackedHistogram([[400,300,200],[500,460,430], [480,260,120],[500,460,430],[500,460,430],[500,460,430]], 600, 600, "my chart", ["temp", "height", "weight"]);
@@ -206,7 +202,7 @@ function getRandomColorRGBA(min, max){
 
 function createAreaGraph(data=[], width, height, names=[], title="Area Graph"){
 
-    const ctx = createCanvas(width, height);
+    const [ctx, canvas] = createCanvas(width, height);
     const colors = [];
     let x = 0;
     
@@ -242,7 +238,7 @@ function createAreaGraph(data=[], width, height, names=[], title="Area Graph"){
         gap += 14.6;
     }
 
-
+    return canvas;
 }
 
 //createAreaGraph([data1(), data1(), data1()], 800, 400, ['temp', 'width', 'height']);
@@ -300,7 +296,7 @@ function distributeData(ctx, centerX, centerY, radius, numAngles, data, colors){
 
 
 function createRadarGraph(data=[], width, height, radius, title="Radar Graph", dataColors=["rgba(200, 103, 100, 0.66)"]){
-    const ctx = createCanvas(width, height);
+    const [ctx, canvas] = createCanvas(width, height);
     ctx.fillStyle = 'black';
     ctx.fillText(`${title}`, width/2-23, 16);
     const numAngles = data[0].length;
@@ -315,6 +311,7 @@ function createRadarGraph(data=[], width, height, radius, title="Radar Graph", d
     }
 
     distributeData(ctx, centerX, centerY, radius, numAngles, data, dataColors);
+    return canvas;
     
 }
 
@@ -329,7 +326,7 @@ function createPyramidGraph(data=[], color='dodgerblue', title="Pyramid Graph", 
         elements.push(data[i][1]);
     }
     let width = Math.max.apply(null, elements)*2 + 160;
-    const ctx = createCanvas(width, height);
+    const [ctx, canvas] = createCanvas(width, height);
     ctx.beginPath();
     ctx.moveTo(width/2, 60);
     ctx.lineTo(width/2, height);
@@ -363,8 +360,42 @@ function createPyramidGraph(data=[], color='dodgerblue', title="Pyramid Graph", 
     ctx.fillText(`${title}`, width/2*0.88, 16);
     ctx.fillText(`${groups[0]}`, width/2.64*0.88, 42);
     ctx.fillText(`${groups[1]}`, width/1.36*0.88, 42);
+    return canvas;
 
 }
+
+const histogram = {
+    createHistogram
+}
+
+const pieChart = {
+    createPieChart
+}
+
+const areaGraph = {
+    createAreaGraph
+}
+
+const lineChart = {
+    createLineChart
+}
+
+const radarGraph = {
+    createRadarGraph
+}
+
+const stackedHistogram = {
+    createStackedHistogram
+}
+
+const scatterPlot = {
+    createScatterPlot
+}
+
+const pyramidGraph = {
+    createPyramidGraph
+}
+
 
 //createPyramidGraph([[30, 50], [80, 120], [50, 70], [70, 80], [120, 60], [126, 96]], 'rgba(255, 100, 100, 0.6)', "Survey Data", ["group1","group2","group3","group4","group5","group6"]);
 
