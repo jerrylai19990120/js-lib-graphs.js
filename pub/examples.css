@@ -1,0 +1,98 @@
+
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+.header{
+    width: 100%;
+    height: 380px;
+}
+
+.background{
+    width: 100vw;
+    height: 380px;
+    object-fit: scale-down;
+    object-fit: cover;
+    opacity: 0.54;
+}
+
+.container{
+    width: 100vw;
+    height: 2800px;
+}
+
+.content{
+    border: 1px solid #e0e1e4;
+    background-color: white;
+    width: 50%;
+    height: 2960px;
+    position: absolute;
+    margin-top: -260px;
+    margin-left: 25%;
+    text-align: center;
+}
+
+.logo{
+    width: 192px;
+    height: 192px;
+    margin-top: 6%;
+}
+
+.name{
+    font-size: 60px;
+    color: #EB7100;
+    font-family: monospace;
+}
+
+.examples{
+    margin-top: 16px;
+    width: 100%;
+    height: 300px;
+    text-align: left;
+}
+
+hr{
+    margin-top: 66px; 
+    width: 80%; 
+    border: #e0e1e4 1px solid;
+}
+
+.graph{
+    height: 290px;
+    width: 340px;
+    margin-left: 30px;
+    float: left;
+}
+
+.title{
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+a{
+    background-color: dodgerblue;
+    border: none;
+    padding: 10px;
+    border-radius: 23px;
+    float: inline-end;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-family: monospace;
+    margin-left: 42%;
+}
+
+p{
+    color: #545558;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+.description{
+    width: 36%; 
+    height: 238px; 
+    float: right; 
+    text-align: center;
+    padding: 30px;
+}

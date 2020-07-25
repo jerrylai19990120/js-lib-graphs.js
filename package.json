@@ -1,0 +1,23 @@
+{
+  "name": "express-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "graphsLib.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csc309-summer-2020/js-library-laiyihui.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csc309-summer-2020/js-library-laiyihui/issues"
+  },
+  "homepage": "https://github.com/csc309-summer-2020/js-library-laiyihui#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

@@ -9,7 +9,7 @@ function createCanvas(width, height) {
         return [ctx, canvas];
 }
 
-function createHistogram(data=[], color="dodgerblue", xAxis="x axis", yAxis="y axis"){
+function createHistogram(data=[], color="dodgerblue", title="Histogram", xAxis="x axis", yAxis="y axis"){
         
         //Set the width of the canvas
         let length = data.length;
@@ -29,6 +29,7 @@ function createHistogram(data=[], color="dodgerblue", xAxis="x axis", yAxis="y a
             ctx.fillText(`${data[i]}`, x+2, startY-3, 30)
             x = x + width + 5;
         }
+        ctx.fillText(`${title}`, length*26/2*0.9, 16);
         ctx.fillText(`X: ${xAxis} \n Y: ${yAxis}`, length*18, 16);
         return canvas;
 }
@@ -70,7 +71,7 @@ function createPieChart(data=[], width=400, height=400, title="Pie Chart") {
         angle += ((data[i]/sum)*2);
     }
     ctx.fillStyle = "black";
-    ctx.fillText(`title: ${title}`, width/2-26, 16);
+    ctx.fillText(`${title}`, width/2-26, 16);
 
     return canvas;
 
