@@ -107,6 +107,7 @@ function createScatterPlot(data=[], color="red", title="Scatter Plot", xAxis="x 
         xCord.push(data[i][0]);
         yCord.push(data[i][1]);
     }
+    
     //Set the width of the canvas
     let width = Math.max.apply(null, xCord)+36;
 
@@ -114,7 +115,7 @@ function createScatterPlot(data=[], color="red", title="Scatter Plot", xAxis="x 
     let height = Math.max.apply(null, yCord)+36;
     
     const [ctx, canvas] = createCanvas(width*1.1, height*1.1);
-
+    ctx.font = "20px Arial";
     ctx.beginPath();
     ctx.moveTo(23, height);
     ctx.lineTo(23, 0);
@@ -140,7 +141,7 @@ function createScatterPlot(data=[], color="red", title="Scatter Plot", xAxis="x 
     ctx.fillText(title, width/2*0.9, 16);
 
     ctx.fillText(`X: ${xAxis}`, width/2*1.6, 16);
-    ctx.fillText(`Y: ${yAxis}`, width/2*1.6, 28);
+    ctx.fillText(`Y: ${yAxis}`, width/2*1.6, 38);
     return canvas;
 }
 
@@ -148,7 +149,7 @@ function createScatterPlot(data=[], color="red", title="Scatter Plot", xAxis="x 
 function createLineChart(data=[], width, height, color="red", title="Line Chart", xAxis="x axis", yAxis="y axis"){
     
     const [ctx, canvas] = createCanvas(width*1.06, height*1.06);
-
+    ctx.font = "20px Arial";
     ctx.beginPath();
     ctx.moveTo(23, height);
     ctx.lineTo(23, 0);
@@ -174,7 +175,7 @@ function createLineChart(data=[], width, height, color="red", title="Line Chart"
     ctx.fillText(title, width/2*0.96, 16);
 
     ctx.fillText(`X: ${xAxis}`, width/2*1.66, 16);
-    ctx.fillText(`Y: ${yAxis}`, width/2*1.66, 28);
+    ctx.fillText(`Y: ${yAxis}`, width/2*1.66, 38);
 
     return canvas;
 }
@@ -182,7 +183,7 @@ function createLineChart(data=[], width, height, color="red", title="Line Chart"
 function createStackedHistogram(data=[], width, height, title="Stacked Histogram", name=[]){
     
     const [ctx, canvas] = createCanvas(width*1.06, height*1.06);
-
+    ctx.font = "20px Arial";
     ctx.beginPath();
     ctx.moveTo(23, height);
     ctx.lineTo(23, 0);
@@ -209,16 +210,16 @@ function createStackedHistogram(data=[], width, height, title="Stacked Histogram
     ctx.fillStyle = colors[0];
     ctx.fillRect(width/2*1.6, 12, 26, 10);
     ctx.fillStyle = colors[1];
-    ctx.fillRect(width/2*1.6, 26, 26, 10);
+    ctx.fillRect(width/2*1.6, 36, 26, 10);
     ctx.fillStyle = colors[2];
-    ctx.fillRect(width/2*1.6, 40, 26, 10);
+    ctx.fillRect(width/2*1.6, 60, 26, 10);
 
     ctx.fillStyle = "black";
     ctx.fillText(`${title}`, width/2*0.9, 16);
     let lineHeight = 0
     for(let i=0;i<name.length;i++){
         ctx.fillText(`${name[i]}`, width/2*1.76, 18+lineHeight);
-        lineHeight += 16;
+        lineHeight += 26;
     }
     return canvas;
 }
@@ -327,6 +328,7 @@ function distributeData(ctx, centerX, centerY, radius, numAngles, data, colors){
 function createRadarGraph(data=[], width, height, radius, title="Radar Graph", dataColors=["rgba(200, 103, 100, 0.66)"], labels=[]){
     const [ctx, canvas] = createCanvas(width*1.16, height*1.16);
     ctx.fillStyle = 'black';
+    ctx.font = "20px Arial";
     ctx.fillText(`${title}`, width/2, 16);
     const numAngles = data[0].length;
     const centerX = width/2+38;
