@@ -57,5 +57,5 @@ example6.appendChild(pyramid);
 
 //Radar graph Demo
 let example7 = document.getElementsByClassName('examples')[7];
-const radar = radarGraph.createRadarGraph([[60, 50, 40, 90, 80], [60, 60, 60, 0, 0], [7, 60, 60, 0, 54]], 500, 500, 240, "Radar Graph", ["rgba(200, 103, 100, 0.66)", "rgba(100, 200, 100, 0.66)", "rgba(100, 100, 200, 0.66)"]);
+const radar = radarGraph.createRadarGraph([[60, 50, 40, 90, 80], [60, 60, 60, 0, 0], [7, 60, 60, 0, 54]], 500, 500, 240, "Radar Graph", ["rgba(200, 103, 100, 0.66)", "rgba(100, 200, 100, 0.66)", "rgba(100, 100, 200, 0.66)"],  ["group1","group2","group3","group4","group5"]);
 example7.appendChild(radar);

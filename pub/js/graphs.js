@@ -324,13 +324,14 @@ function distributeData(ctx, centerX, centerY, radius, numAngles, data, colors){
 }
 
 
-function createRadarGraph(data=[], width, height, radius, title="Radar Graph", dataColors=["rgba(200, 103, 100, 0.66)"]){
-    const [ctx, canvas] = createCanvas(width, height);
+function createRadarGraph(data=[], width, height, radius, title="Radar Graph", dataColors=["rgba(200, 103, 100, 0.66)"], labels=[]){
+    const [ctx, canvas] = createCanvas(width*1.16, height*1.16);
     ctx.fillStyle = 'black';
-    ctx.fillText(`${title}`, width/2-23, 16);
+    ctx.fillText(`${title}`, width/2, 16);
     const numAngles = data[0].length;
-    const centerX = width/2;
-    const centerY = height/2+18;
+    const centerX = width/2+38;
+    const centerY = height/2+66;
+
     let opacity = 0.16;
     while(radius>60){
         drawPolygon(ctx, centerX, centerY, radius, numAngles,
@@ -338,6 +339,20 @@ function createRadarGraph(data=[], width, height, radius, title="Radar Graph", d
         opacity += 0.16;
         radius-=40;
     }
+    ctx.save();
+    let angle = 360/numAngles;
+    ctx.translate(centerX, centerY);
+    ctx.beginPath();
+    ctx.moveTo(0, -260);
+    ctx.font = "20px Arial";
+
+    for(let i=0;i<numAngles;i++){
+        ctx.rotate(angle*Math.PI/180);
+        ctx.moveTo(0, -260);
+        ctx.fillText(labels[i], 0, -260);
+    }
+    ctx.closePath();
+    ctx.restore();
 
     distributeData(ctx, centerX, centerY, radius, numAngles, data, dataColors);
     return canvas;
