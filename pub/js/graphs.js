@@ -16,9 +16,20 @@ function createHistogram(data=[], color="dodgerblue", title="Histogram", xAxis="
 
         //Set the height of the canvas
         let max = Math.max.apply(null, data)+36;
-        const [ctx, canvas] = createCanvas(26*length, max);
+        const [ctx, canvas] = createCanvas(30*length, max*1.08);
         
-        let x = 5;
+        ctx.beginPath();
+        ctx.moveTo(23, max);
+        ctx.lineTo(23, 0);
+        ctx.moveTo(23, max);
+        ctx.lineTo(max, max);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.fillText(`${xAxis}`, 1, max/2);
+        ctx.fillText(`${yAxis}`, length*30/2.3, max*1.036);
+
+        let x = 26;
         for(let i=0;i<data.length;i++){
             ctx.fillStyle = color;
             let startY = max - data[i];
@@ -67,9 +78,10 @@ function createPieChart(data=[], width=400, height=400, title="Pie Chart", label
         let halfVal = (angle*Math.PI + (angle+(data[i]/sum)*2)*Math.PI) / 2;
         let labelX = Math.cos(halfVal) * 120 * 1.36 + width/2;
         let labelY = Math.sin(halfVal) * 120 * 1.36 + height/2;
+        ctx.fill();
+        ctx.fillStyle = 'black';
         ctx.fillText(labels[i], labelX, labelY)
         ctx.lineTo(width/2, height/2);
-        ctx.fill();
         ctx.stroke();
         ctx.closePath(); 
 

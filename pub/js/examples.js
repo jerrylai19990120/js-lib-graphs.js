@@ -1,7 +1,7 @@
 
 //Histogram Demo
 let example0 = document.getElementsByClassName('examples')[0];
-const hist = histogram.createHistogram([160,150,140,100,400,400,120,340,10,20,36,34,15,355,77,233], "dodgerblue", "temperature", "hydration");
+const hist = histogram.createHistogram([160,150,140,100,400,400,120,340,10,20,36,34,15,355,77,233], "dodgerblue", "Sample Data", "temperature", "hydration");
 example0.appendChild(hist);
 
 
