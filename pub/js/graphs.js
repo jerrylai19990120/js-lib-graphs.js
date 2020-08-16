@@ -349,7 +349,7 @@ function createRadarGraph(data=[], width, height, radius, title="Radar Graph", d
     for(let i=0;i<numAngles;i++){
         ctx.rotate(angle*Math.PI/180);
         ctx.moveTo(0, -260);
-        ctx.fillText(labels[i], -30, -260);
+        ctx.fillText(labels[i], -28, -260);
     }
     ctx.closePath();
     ctx.restore();
