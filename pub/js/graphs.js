@@ -41,7 +41,7 @@ function sumArray(total, num){
 
 const randomColoring = () => "#"+Math.floor(Math.random()*16777215).toString(16);
 
-function createPieChart(data=[], width=400, height=400, title="Pie Chart") {
+function createPieChart(data=[], width=400, height=400, title="Pie Chart", labels=[]) {
 
     const [ctx, canvas] = createCanvas(width, height);
     let angle = 0;
@@ -64,14 +64,23 @@ function createPieChart(data=[], width=400, height=400, title="Pie Chart") {
         ctx.beginPath();
         ctx.moveTo(width/2, height/2);
         ctx.arc(width/2, height/2, 120, angle*Math.PI, (angle+(data[i]/sum)*2)*Math.PI);
+        let halfVal = (angle*Math.PI + (angle+(data[i]/sum)*2)*Math.PI) / 2;
+        let labelX = Math.cos(halfVal) * 120 * 1.36 + width/2;
+        let labelY = Math.sin(halfVal) * 120 * 1.36 + height/2;
+        ctx.fillText(labels[i], labelX, labelY)
         ctx.lineTo(width/2, height/2);
         ctx.fill();
         ctx.stroke();
         ctx.closePath(); 
+
         angle += ((data[i]/sum)*2);
+
+        
     }
     ctx.fillStyle = "black";
     ctx.fillText(`${title}`, width/2-26, 16);
+
+    
 
     return canvas;
 

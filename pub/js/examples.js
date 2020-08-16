@@ -7,7 +7,7 @@ example0.appendChild(hist);
 
 //Pie chart Demo
 let example1 = document.getElementsByClassName('examples')[1];
-const pie = pieChart.createPieChart([30,5,5,40,20],400,400,"Survey Data");
+const pie = pieChart.createPieChart([30,5,5,40,20],400,400,"Survey Data", ["label1", "label2", "label3", "labek4", "label5"]);
 example1.appendChild(pie);
 
 
