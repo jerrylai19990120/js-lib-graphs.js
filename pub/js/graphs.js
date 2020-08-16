@@ -113,12 +113,24 @@ function createScatterPlot(data=[], color="red", title="Scatter Plot", xAxis="x 
     //Set the height of the canvas
     let height = Math.max.apply(null, yCord)+36;
     
-    const [ctx, canvas] = createCanvas(width, height);
+    const [ctx, canvas] = createCanvas(width*1.1, height*1.1);
+
+    ctx.beginPath();
+    ctx.moveTo(23, height);
+    ctx.lineTo(23, 0);
+    ctx.moveTo(23, height);
+    ctx.lineTo(height*1.02, height);
+    ctx.stroke();
+    ctx.closePath();
+
+    ctx.fillText(`${xAxis}`, 1, height/2);
+    ctx.fillText(`${yAxis}`, width/2.3,height*1.036);
+
     ctx.fillStyle = color;
     for(let i=0;i<data.length;i++){
         ctx.beginPath();
-        let scaleX = data[i][0];
-        let scaleY = data[i][1];
+        let scaleX = data[i][0]+26;
+        let scaleY = data[i][1]+24;
         ctx.arc(scaleX, scaleY, 2, 0, 2*Math.PI);
         ctx.fill();
         ctx.closePath();
@@ -135,14 +147,25 @@ function createScatterPlot(data=[], color="red", title="Scatter Plot", xAxis="x 
 
 function createLineChart(data=[], width, height, color="red", title="Line Chart", xAxis="x axis", yAxis="y axis"){
     
-    const [ctx, canvas] = createCanvas(width, height);
+    const [ctx, canvas] = createCanvas(width*1.06, height*1.06);
 
-    let x = 5;
+    ctx.beginPath();
+    ctx.moveTo(23, height);
+    ctx.lineTo(23, 0);
+    ctx.moveTo(23, height);
+    ctx.lineTo(width*1.06, height);
+    ctx.stroke();
+    ctx.closePath();
+
+    ctx.fillText(`${xAxis}`, 1, height/2);
+    ctx.fillText(`${yAxis}`, width/2.3,height*1.036);
+
+    let x = 23;
     ctx.strokeStyle = color;
     ctx.beginPath();
     ctx.moveTo(x, data[0]);
     for(let i=0;i<data.length; i++){
-        ctx.lineTo(x, data[i]);
+        ctx.lineTo(x, data[i]+30);
         ctx.stroke();
         x += 10;
     }
@@ -158,12 +181,21 @@ function createLineChart(data=[], width, height, color="red", title="Line Chart"
 
 function createStackedHistogram(data=[], width, height, title="Stacked Histogram", name=[]){
     
-    const [ctx, canvas] = createCanvas(width, height);
+    const [ctx, canvas] = createCanvas(width*1.06, height*1.06);
+
+    ctx.beginPath();
+    ctx.moveTo(23, height);
+    ctx.lineTo(23, 0);
+    ctx.moveTo(23, height);
+    ctx.lineTo(width*1.06, height);
+    ctx.stroke();
+    ctx.closePath();
+
     const colors = [];
     for(let i=0;i<data[0].length;i++){
         colors.push(randomColoring());
     }
-    let x = 5;
+    let x = 36;
     let wide = 20;
     for(let i=0;i<data.length;i++){
         for(let j=0;j<data[i].length;j++){
