@@ -50,14 +50,94 @@
                 <div class="jumbotron jumbotron-fluid">
                   <div class="container">
                     <h3>Objects</h3><br>
-                    <p class="lead"><code>histogram</code><span>API for this object<code>createHistogram()</code></span></p><hr>
-                    <p class="lead"><code>pieChart</code><span>API for this object <code>createPieChart()</code></span></p><hr>
-                    <p class="lead"><code>areaGraph</code><span>API for this object <code>createAreaGraph()</code></span></p><hr>
-                    <p class="lead"><code>lineChart</code><span>API for this object <code>createLineChart()</code> </span></p><hr>
-                    <p class="lead"><code>radarGraph</code><span>API for this object <code>createRadarGraph()</code></span></p><hr>
-                    <p class="lead"><code>stackedHistogram</code><span>API for this object <code>createStackedHistogram()</code></span></p><hr>
-                    <p class="lead"><code>scatterplot</code><span>API for this object <code>createScatterPlot()</code> </span></p><hr>
-                    <p class="lead"><code>pyramidGraph</code><span>API for this object <code>createPyramidGraph()</code></span></p><hr>
+                    <p class="lead">
+                      <table class="table table-striped table-dark">
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td><code style="color: #F8C534;">histogram</code></td>
+                            <td><code style="color: #F8C534;">createHistogram()</code></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </p><hr>
+                    <p class="lead">
+                      <table class="table table-striped table-dark">
+                        <tbody>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td><code style="color: #F8C534;">pieChart</code></td>
+                            <td><code style="color: #F8C534;">createPieChart()</code></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </p><hr>
+                    <p class="lead">
+                      <table class="table table-striped table-dark">
+                        <tbody>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td><code style="color: #F8C534;">areaGraph</code></td>
+                            <td><code style="color: #F8C534;">createAreaGraph()</code></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </p><hr>
+                    <p class="lead">
+                      <table class="table table-striped table-dark">
+                        <tbody>
+                          <tr>
+                            <th scope="row">4</th>
+                            <td><code style="color: #F8C534;">lineChart</code></td>
+                            <td><code style="color: #F8C534;">createLineChart()</code></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </p><hr>
+                    <p class="lead">
+                      <table class="table table-striped table-dark">
+                        <tbody>
+                          <tr>
+                            <th scope="row">5</th>
+                            <td><code style="color: #F8C534;">radarGraph</code></td>
+                            <td><code style="color: #F8C534;">createRadarGraph()</code></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </p><hr>
+                    <p class="lead">
+                      <table class="table table-striped table-dark">
+                        <tbody>
+                          <tr>
+                            <th scope="row">6</th>
+                            <td><code style="color: #F8C534;">stackedHistogram</code></td>
+                            <td><code style="color: #F8C534;">createStackedHistogram()</code></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </p><hr>
+                    <p class="lead">
+                      <table class="table table-striped table-dark">
+                        <tbody>
+                          <tr>
+                            <th scope="row">7</th>
+                            <td><code style="color: #F8C534;">scatterplot</code></td>
+                            <td><code style="color: #F8C534;">createScatterPlot()</code></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </p><hr>
+                    <p class="lead">
+                      <table class="table table-striped table-dark">
+                        <tbody>
+                          <tr>
+                            <th scope="row">8</th>
+                            <td><code style="color: #F8C534;">pyramidGraph</code></td>
+                            <td><code style="color: #F8C534;">createPyramidGraph()</code></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </p><hr>
                   </div>
                 </div>
               </div>
@@ -68,14 +148,383 @@
                 <div class="jumbotron jumbotron-fluid">
                   <div class="container">
                     <h3>APIs Specifications</h3><br>
-                    <p class="lead"><code>createHistogram(data, color, title, xAxis, yAxis)</code></p><hr>
-                    <p class="lead"><code>createPieChart(data, width, height, labels)</code></p><hr>
-                    <p class="lead"><code>createAreaGraph(data, width, height, names, title)</code></p><hr>
-                    <p class="lead"><code>createLineChart(data, width, height, color, title, xAixs, yAxis)</code></p><hr>
-                    <p class="lead"><code>createRadarGraph(data, width, height, radius, title, dataColors, labels)</code></p><hr>
-                    <p class="lead"><code>createStackedHistogram(data, width, height, title, name)</code></p><hr>
-                    <p class="lead"><code>createScatterPlot(data, color, title, xAxis, yAxis)</code></p><hr>
-                    <p class="lead"><code>createPyramidGraph(data, color, title, categories, groups)</code></p><hr>
+                    <p class="lead"><code>createHistogram(data, color, title, xAxis, yAxis)</code><br>
+                      <table class="table table-striped table-dark">
+                        <thead>
+                          <tr>
+                            <th scope="col">Property</th>
+                            <th scope="col">Default</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>data</td>
+                            <td>[]</td>
+                            <td>Array</td>
+                            <td>An array of numeric values e.g [1, 2, 14, 18]</td>
+                          </tr>
+                          <tr>
+                            <td>color</td>
+                            <td>dodgerblue</td>
+                            <td>String</td>
+                            <td>A string of color code or name</td>
+                          </tr>
+                          <tr>
+                            <td>title</td>
+                            <td>Histogram</td>
+                            <td>String</td>
+                            <td>Default title for the graph</td>
+                          </tr>
+                          <tr>
+                            <td>xAxis</td>
+                            <td>x axis</td>
+                            <td>String</td>
+                            <td>Default x axis name</td>
+                          </tr>
+                          <tr>
+                            <td>yAxis</td>
+                            <td>y axis</td>
+                            <td>String</td>
+                            <td>Default y axis name</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </p><hr>
+                    <p class="lead"><code>createPieChart(data, width, height, labels)</code><br>
+                      <table class="table table-striped table-dark">
+                        <thead>
+                          <tr>
+                            <th scope="col">Property</th>
+                            <th scope="col">Default</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>data</td>
+                            <td>[]</td>
+                            <td>Array</td>
+                            <td>An array of numeric values e.g [16, 28, 12, 54]</td>
+                          </tr>
+                          <tr>
+                            <td>width</td>
+                            <td>400</td>
+                            <td>Number</td>
+                            <td>Set a width for the canvas</td>
+                          </tr>
+                          <tr>
+                            <td>height</td>
+                            <td>400</td>
+                            <td>Number</td>
+                            <td>Set a height for the canvas</td>
+                          </tr>
+                          <tr>
+                            <td>title</td>
+                            <td>Pie Chart</td>
+                            <td>String</td>
+                            <td>Default title for the graph</td>
+                          </tr>
+                          <tr>
+                            <td>labels</td>
+                            <td>[]</td>
+                            <td>Array</td>
+                            <td>An array of label e.g ["label1", "label2", "label3"]</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </p><hr>
+                    <p class="lead"><code>createAreaGraph(data, width, height, names, title)</code><br>
+                      <table class="table table-striped table-dark">
+                        <thead>
+                          <tr>
+                            <th scope="col">Property</th>
+                            <th scope="col">Default</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>data</td>
+                            <td>[]</td>
+                            <td>Array</td>
+                            <td>An nested array of numeric values e.g [[1, 2, 3], [4, 5, 6], [12, 42, 54]]</td>
+                          </tr>
+                          <tr>
+                            <td>width</td>
+                            <td>null</td>
+                            <td>Number</td>
+                            <td>Set a width for the canvas</td>
+                          </tr>
+                          <tr>
+                            <td>height</td>
+                            <td>null</td>
+                            <td>Number</td>
+                            <td>Set a height for the canvas</td>
+                          </tr>
+                          <tr>
+                            <td>names</td>
+                            <td>[]</td>
+                            <td>Array</td>
+                            <td>An array of labels same length as data array e.g ["label1", "label2", "label3"]</td>
+                          </tr>
+                          <tr>
+                            <td>title</td>
+                            <td>Area Graph</td>
+                            <td>String</td>
+                            <td>Default title for the graph</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </p><hr>
+                    <p class="lead"><code>createLineChart(data, width, height, color, title, xAixs, yAxis)</code><br>
+                      <table class="table table-striped table-dark">
+                        <thead>
+                          <tr>
+                            <th scope="col">Property</th>
+                            <th scope="col">Default</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>data</td>
+                            <td>[]</td>
+                            <td>Array</td>
+                            <td>An array of numeric values e.g [12, 16, 43, 53]</td>
+                          </tr>
+                          <tr>
+                            <td>width</td>
+                            <td>null</td>
+                            <td>Number</td>
+                            <td>Set a width for the canvas</td>
+                          </tr>
+                          <tr>
+                            <td>height</td>
+                            <td>null</td>
+                            <td>Number</td>
+                            <td>Set a height for the canvas</td>
+                          </tr>
+                          <tr>
+                            <td>color</td>
+                            <td>red</td>
+                            <td>String</td>
+                            <td>A string of color code for the line</td>
+                          </tr>
+                          <tr>
+                            <td>title</td>
+                            <td>Line Chart</td>
+                            <td>String</td>
+                            <td>Default title for the graph</td>
+                          </tr>
+                          <tr>
+                            <td>xAxis</td>
+                            <td>x axis</td>
+                            <td>String</td>
+                            <td>Default x axis name</td>
+                          </tr>
+                          <tr>
+                            <td>yAxis</td>
+                            <td>y axis</td>
+                            <td>String</td>
+                            <td>Default y axis name</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </p><hr>
+                    <p class="lead"><code>createRadarGraph(data, width, height, radius, title, dataColors, labels)</code><br>
+                      <table class="table table-striped table-dark">
+                        <thead>
+                          <tr>
+                            <th scope="col">Property</th>
+                            <th scope="col">Default</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>data</td>
+                            <td>[]</td>
+                            <td>Array</td>
+                            <td>An nested array of numeric values e.g [[60, 50, 40, 90, 80], [60, 60, 60, 0, 0]]</td>
+                          </tr>
+                          <tr>
+                            <td>width</td>
+                            <td>null</td>
+                            <td>Number</td>
+                            <td>Set a width for the canvas</td>
+                          </tr>
+                          <tr>
+                            <td>height</td>
+                            <td>null</td>
+                            <td>Number</td>
+                            <td>Set a height for the canvas</td>
+                          </tr>
+                          <tr>
+                            <td>radius</td>
+                            <td>null</td>
+                            <td>Number</td>
+                            <td>Set radius for the radar shape</td>
+                          </tr>
+                          <tr>
+                            <td>title</td>
+                            <td>Radar Graph</td>
+                            <td>String</td>
+                            <td>Default title for the graph</td>
+                          </tr>
+                          <tr>
+                            <td>dataColors</td>
+                            <td>[]</td>
+                            <td>Array</td>
+                            <td>An array of color code string that matches the length of data e.g ["red", "blue"]</td>
+                          </tr>
+                          <tr>
+                            <td>labels</td>
+                            <td>[]</td>
+                            <td>Array</td>
+                            <td>An array of string e.g ["label1", "label2"]</td>
+                          </tr>
+                        </tbody>
+                        </tbody>
+                      </table>
+                    </p><hr>
+                    <p class="lead"><code>createStackedHistogram(data, width, height, title, name)</code><br>
+                      <table class="table table-striped table-dark">
+                        <thead>
+                          <tr>
+                            <th scope="col">Property</th>
+                            <th scope="col">Default</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>data</td>
+                            <td>[]</td>
+                            <td>Array</td>
+                            <td>An nested array of numeric values e.g [[1, 2, 4], [5, 2, 3]]</td>
+                          </tr>
+                          <tr>
+                            <td>width</td>
+                            <td>null</td>
+                            <td>Number</td>
+                            <td>Set a width for the canvas</td>
+                          </tr>
+                          <tr>
+                            <td>height</td>
+                            <td>null</td>
+                            <td>Number</td>
+                            <td>Set a height for the canvas</td>
+                          </tr>
+                          <tr>
+                            <td>title</td>
+                            <td>Stacked Histogram</td>
+                            <td>String</td>
+                            <td>Default title for the graph</td>
+                          </tr>
+                          <tr>
+                            <td>name</td>
+                            <td>[]</td>
+                            <td>Array</td>
+                            <td>An array of labels has the same length as the nested data arrays e.g ["label1", "label2", "label3"]</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </p><hr>
+                    <p class="lead"><code>createScatterPlot(data, color, title, xAxis, yAxis)</code><br>
+                      <table class="table table-striped table-dark">
+                        <thead>
+                          <tr>
+                            <th scope="col">Property</th>
+                            <th scope="col">Default</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>data</td>
+                            <td>[]</td>
+                            <td>Array</td>
+                            <td>An array pf numeric values e.g [1, 3, 43, 41, 54, 66]</td>
+                          </tr>
+                          <tr>
+                            <td>color</td>
+                            <td>red</td>
+                            <td>String</td>
+                            <td>A color code string</td>
+                          </tr>
+                          <tr>
+                            <td>title</td>
+                            <td>Scatter Plot</td>
+                            <td>String</td>
+                            <td>Default title for the graph</td>
+                          </tr>
+                          <tr>
+                            <td>xAxis</td>
+                            <td>x axis</td>
+                            <td>String</td>
+                            <td>Set a name for x axis</td>
+                          </tr>
+                          <tr>
+                            <td>yAxis</td>
+                            <td>y axis</td>
+                            <td>String</td>
+                            <td>Set a name for y axis</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </p><hr>
+                    <p class="lead"><code>createPyramidGraph(data, color, title, categories, groups)</code><br>
+                      <table class="table table-striped table-dark">
+                        <thead>
+                          <tr>
+                            <th scope="col">Property</th>
+                            <th scope="col">Default</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>data</td>
+                            <td>[]</td>
+                            <td>Array</td>
+                            <td>An nested array of numeric values (nested array with length 2)e.g [[52, 66], [55, 32], [23, 43]]</td>
+                          </tr>
+                          <tr>
+                            <td>color</td>
+                            <td>dodgerblue</td>
+                            <td>String</td>
+                            <td>A color code string e.g "blue", "#0000"</td>
+                          </tr>
+                          <tr>
+                            <td>title</td>
+                            <td>Pyramid Graph</td>
+                            <td>String</td>
+                            <td>Default title for the graph</td>
+                          </tr>
+                          <tr>
+                            <td>categories</td>
+                            <td>[]</td>
+                            <td>Array</td>
+                            <td>An array of string e.g ["height", "weight", "age"]</td>
+                          </tr>
+                          <tr>
+                            <td>groups</td>
+                            <td>["1", "2"]</td>
+                            <td>Array</td>
+                            <td>An array of strings (length 2) e.g ["groupA", "groupB"]</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </p><hr>
                   </div>
                 </div>
               </div>
