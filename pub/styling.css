@@ -1,0 +1,47 @@
+.bg-light{
+    background-color: #FBC836!important;
+}
+
+body{
+    background-color: #242F43;
+}
+
+.jumbotron{
+    background-color: #242F43;
+    color: #FBC836;
+}
+
+.btn-primary{
+    background-color: #FBC836;
+    border: #FBC836;
+}
+
+.btn-primary:hover{
+    background-color: #ca9d21;
+}
+
+.btn-outline-primary{
+    color: #FBC836;
+    border-color: #FBC836;
+}
+
+.btn-outline-primary:hover{
+    color: white;
+    background-color: #FBC836;
+    border-color: #FBC836;
+}
+
+.download{
+    color: #242F43;
+    border-color: #242F43;
+}
+
+.download:hover{
+    background-color: #242F43;
+    color: #FBC836;
+    border-color: #FBC836;
+}
+
+.apis{
+    background-color: #384764;
+}
